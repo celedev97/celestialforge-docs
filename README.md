@@ -1,49 +1,24 @@
-# Starlight Starter Kit: Basics
+# CelestialForge Docs
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
-
-```
-npm create astro@latest -- --template starlight
-```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro + Starlight project, you'll see the following folders and files:
+Documentation of the CelestialForge RedM resources. Built with [Astro Starlight](https://starlight.astro.build/)
+and published on GitHub Pages: https://celedev97.github.io/celestialforge-docs/
 
 ```
-.
-├── public/
-├── src/
-│   ├── assets/
-│   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
+npm install
+npm run dev      # http://localhost:4321/celestialforge-docs/
+npm run build
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+## Generated pages
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+`exports.md` and `types.md` of each resource are generated from its Lua typings (LuaLS annotations in the
+resource's `types/types.lua`, plus the `---@class` blocks of `config.lua`). Do not edit them by hand:
 
-Static assets, like favicons, can be placed in the `public/` directory.
+```
+python scripts/lua_types_to_starlight.py --resource pmm_skill_system \
+    --types <path to pmm_skill_system>/types/types.lua \
+    --classes <path to pmm_skill_system>/config.lua \
+    --out src/content/docs/skill-system
+```
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+Run it again whenever the typings change, then commit the result.
