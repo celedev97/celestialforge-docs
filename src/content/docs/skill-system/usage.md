@@ -42,7 +42,7 @@ local skillData = exports.pmm_skill_system:GetSkillDataClient()
 local speed = exports.pmm_skill_system:CheckSkillLevel(skillData, "hunting", 2) and 1.25 or 1.0
 ```
 
-## Jobs (requires bcc-society)
+## Jobs
 
 ```lua
 exports.pmm_skill_system:GetCombinedSkillsForJob("blacksmith")              -- best level per skill among the job's members
