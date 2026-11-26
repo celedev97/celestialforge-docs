@@ -11,6 +11,7 @@ Everything is in `config.lua`, which the asset escrow leaves open.
 
 | Option | What it does |
 |---|---|
+| `Config.Framework` | `"auto"` uses `vorp_core` or `rsg-core`, whichever is on the server; force it with `"vorp"` or `"rsg"` |
 | `Config.Locale` | language of every text, a file in `locales/` (`"en"`, `"it"`) |
 | `Config.Command` / `Config.Item` | command and usable item that open the skill book (`nil` disables) |
 | `Config.DailyExpCap` | max EXP per day in each skill |

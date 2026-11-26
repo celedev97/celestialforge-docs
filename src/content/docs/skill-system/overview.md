@@ -1,11 +1,11 @@
 ---
 title: Overview
-description: Skills, levels and perks for RedM (VORP), with a skill book UI.
+description: Skills, levels and perks for RedM (VORP or RSG), with a skill book UI.
 sidebar:
   order: 1
 ---
 
-Skills, levels and perks for RedM (VORP). Players gain EXP from your other scripts, level up, and unlock perks at
+Skills, levels and perks for RedM (VORP or RSG). Players gain EXP from your other scripts, level up, and unlock perks at
 instructor NPCs. Everything they have learned is collected in a skill book with an animated page-turning UI.
 
 - Any number of skills, 5 or 10 levels each, with a perk every few levels
@@ -22,16 +22,17 @@ instructor NPCs. Everything they have learned is collected in a skill book with 
 
 | Resource | Required | Notes |
 |---|---|---|
-| `vorp_core`, `vorp_character`, `vorp_inventory` | yes | VORP framework |
-| `vorp_inputs` | yes | confirmation box when unlocking a perk (part of VORP) |
+| `vorp_core`, `vorp_character`, `vorp_inventory` | one of the two frameworks | VORP framework |
+| `vorp_inputs` | with VORP | confirmation box when unlocking a perk (part of VORP) |
+| `rsg-core`, `rsg-inventory` | one of the two frameworks | RSG framework (confirmation uses buttons) |
 | `oxmysql` | yes | database |
 | `feather-menu` | yes | instructor menus |
-| `bln_notify` | no | nicer level up notifications; without it a VORP tip is used |
+| `bln_notify` | no | nicer level up notifications; without it the framework notification is used |
 
 ## Installation
 
 1. Put `pmm_skill_system` in your resources folder.
-2. Add `ensure pmm_skill_system` to your `server.cfg`, after VORP, `oxmysql` and `feather-menu`.
+2. Add `ensure pmm_skill_system` to your `server.cfg`, after your framework (VORP or RSG), `oxmysql` and `feather-menu`.
 3. Start the server: the tables `pmm_skills` and `pmm_skills_perks` are created automatically.
 4. Edit `config.lua`, then `restart pmm_skill_system`.
 
